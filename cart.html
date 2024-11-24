@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe JIIT 128</title>
+    <title>Cart - Cafe JIIT 128</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"> <!-- Link to your shared CSS -->
 </head>
 <body>
     <div class="nav">
-        <div class="logocon">
-            <img src="JIIT-Noida-Logo.png" alt="JIIT logo" />
-            <h1>Cafe JIIT 128</h1>
-        </div>
         <div class="Navigation">
             <ul class="noBullet">
                 <li><a href="index.html">Home</a></li>
@@ -22,24 +18,43 @@
                 <li><a href="login.html">Login</a></li>
             </ul>
         </div>
+        <div class="logocon">
+            <img src="JIIT-Noida-Logo.png" alt="JIIT logo" />
+            <h1>Cafe JIIT 128</h1>
+        </div>
         <div class="nav-items">
             <span class="cart-icon" id="cart-icon" onclick="window.location.href='cart.html'">🛒<span class="cart-count" id="cart-count">0</span></span>
         </div>
     </div>
 
-    <div class="welcome-section">
-        <h2>Welcome to Cafe JIIT 128</h2>
-        <p>Your favorite place for delicious food and drinks!</p>
+    <div class="cart-section">
+        <h2>Your Cart</h2>
+        <div id="cart-items"></div>
+        <button id="checkout-button">Proceed to Checkout</button>
     </div>
 
     <script>
         let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+        function displayCartItems() {
+            const cartItemsDiv = document.getElementById("cart-items");
+            cartItemsDiv.innerHTML = '';
+            for (const [itemName, itemDetails] of Object.entries(cart)) {
+                const itemDiv = document.createElement("div");
+                itemDiv.textContent = `${itemName} - ₹${itemDetails.price} x ${itemDetails.quantity}`;
+                cartItemsDiv.appendChild(itemDiv);
+            }
+            if (Object.keys(cart).length === 0) {
+                cartItemsDiv.textContent = "Your cart is empty.";
+            }
+        }
 
         function updateCartCount() {
             const cartCount = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
             document.getElementById("cart-count").textContent = cartCount;
         }
 
+        displayCartItems();
         updateCartCount();
     </script>
 </body>

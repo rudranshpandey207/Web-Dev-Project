@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Cafe JIIT 128</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your shared CSS -->
+</head>
+<body>
+    <div class="nav">
+        <div class="Navigation">
+            <ul class="noBullet">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="orders.html">Orders</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+        <div class="logocon">
+            <img src="JIIT-Noida-Logo.png" alt="JIIT logo" />
+            <h1>Cafe JIIT 128</h1>
+        </div>
+        <div class="nav-items">
+            <span class="cart-icon" id="cart-icon" onclick="window.location.href='cart.html'">🛒<span class="cart-count" id="cart-count">0</span></span>
+        </div>
+    </div>
+
+    <div class="menu-section">
+        <h2>Our Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-item" id="item1">
+                <h3>Classic Coffee</h3>
+                <p>Rich, freshly brewed coffee made with premium beans.</p>
+                <div class="price">₹100</div>
+                <button id="add-item1" onclick="addToCart('Classic Coffee', 100, 'item1')">Add to Cart</button>
+                <button id="remove-item1" class="remove" onclick="removeFromCart('Classic Coffee')">Remove from Cart</button>
+            </div>
+            <div class="menu-item" id="item2">
+                <h3>Chocolate Cake</h3>
+                <p>Decadent chocolate cake topped with rich frosting.</p>
+                <div class="price">₹250</div>
+                <button id="add-item2" onclick="addToCart('Chocolate Cake', 250, 'item2')">Add to Cart</button>
+                <button id="remove-item2" class="remove" onclick="removeFromCart('Chocolate Cake')">Remove from Cart</button>
+            </div>
+            <div class="menu-item" id="item3">
+                <h3>Veg Pizza</h3>
+                <p>A delicious pizza topped with fresh vegetables and cheese.</p>
+                <div class="price">₹300</div>
+                <button id="add-item3" onclick="addToCart('Veg Pizza', 300, 'item3')">Add to Cart</button>
+                <button id="remove-item3" class="remove" onclick="removeFromCart('Veg Pizza')">Remove from Cart</button>
+            </div>
+            <div class="menu-item" id="item4">
+                <h3>Cheese Sandwich</h3>
+                <p>A classic sandwich filled with melted cheese and fresh veggies.</p>
+                <div class="price">₹150</div>
+                <button id="add-item4" onclick="addToCart('Cheese Sandwich', 150, 'item4')">Add to Cart</button>
+                <button id="remove-item4" class="remove" onclick="removeFromCart('Cheese Sandwich')">Remove from Cart</button>
+            </div>
+            <!-- Add more menu items as needed -->
+        </div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+
+        function addToCart(itemName, itemPrice, itemId) {
+            if (cart[itemName]) {
+                cart[itemName].quantity += 1;
+            } else {
+                cart[itemName] = { price: itemPrice, quantity: 1 };
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function removeFromCart(itemName) {
+            if (cart[itemName]) {
+                cart[itemName].quantity -= 1;
+                if (cart[itemName].quantity <= 0) {
+                    delete cart[itemName];
+                }
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartCount();
+            }
+        }
+
+        function updateCartCount() {
+            const cartCount = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
+            document.getElementById("cart-count").textContent = cartCount;
+        }
+
+        updateCartCount();
+    </script>
+</body>
+</html>
