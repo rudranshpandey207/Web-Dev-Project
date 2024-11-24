@@ -9,6 +9,10 @@
 </head>
 <body>
     <div class="nav">
+        <div class="logocon">
+            <img src="JIIT-Noida-Logo.png" alt="JIIT logo" />
+            <h1>Cafe JIIT 128</h1>
+        </div>
         <div class="Navigation">
             <ul class="noBullet">
                 <li><a href="index.html">Home</a></li>
@@ -18,10 +22,7 @@
                 <li><a href="login.html">Login</a></li>
             </ul>
         </div>
-        <div class="logocon">
-            <img src="JIIT-Noida-Logo.png" alt="JIIT logo" />
-            <h1>Cafe JIIT 128</h1>
-        </div>
+        
         <div class="nav-items">
             <span class="cart-icon" id="cart-icon" onclick="window.location.href='cart.html'">🛒<span class="cart-count" id="cart-count">0</span></span>
         </div>
@@ -30,32 +31,43 @@
     <div class="cart-section">
         <h2>Your Cart</h2>
         <div id="cart-items"></div>
+        <div id="total-amount" style="font-weight: bold; margin-top: 20px;"></div>
         <button id="checkout-button">Proceed to Checkout</button>
     </div>
 
     <script>
-        let cart = JSON.parse(localStorage.getItem('cart')) || {};
+    let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
-        function displayCartItems() {
-            const cartItemsDiv = document.getElementById("cart-items");
-            cartItemsDiv.innerHTML = '';
-            for (const [itemName, itemDetails] of Object.entries(cart)) {
-                const itemDiv = document.createElement("div");
-                itemDiv.textContent = `${itemName} - ₹${itemDetails.price} x ${itemDetails.quantity}`;
-                cartItemsDiv.appendChild(itemDiv);
-            }
-            if (Object.keys(cart).length === 0) {
-                cartItemsDiv.textContent = "Your cart is empty.";
-            }
-        }
+    function displayCartItems() {
+    const cartItemsDiv = document.getElementById("cart-items");
+    cartItemsDiv.innerHTML = '';
+    let totalAmount = 0; // Initialize total amount
 
-        function updateCartCount() {
-            const cartCount = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
-            document.getElementById("cart-count").textContent = cartCount;
-        }
+    for (const [itemName, itemDetails] of Object.entries(cart)) {
+        const itemDiv = document.createElement("div");
+        itemDiv.textContent = `${itemName} - ₹${itemDetails.price} x ${itemDetails.quantity} (Expected Time: ${itemDetails.expectedTime})`;
+        cartItemsDiv.appendChild(itemDiv);
 
-        displayCartItems();
-        updateCartCount();
+        // Calculate total amount
+        totalAmount += itemDetails.price * itemDetails.quantity;
+    }
+
+    if (Object.keys(cart).length === 0) {
+        cartItemsDiv.textContent = "Your cart is empty.";
+        totalAmount = 0; // Set total amount to 0 if cart is empty
+    }
+
+    // Update total amount display
+    document.getElementById("total-amount").textContent = `Total Amount: ₹${totalAmount}`;
+}
+
+function updateCartCount() {
+    const cartCount = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
+    document.getElementById("cart-count").textContent = cartCount;
+}
+
+displayCartItems();
+updateCartCount();
     </script>
 </body>
 </html>

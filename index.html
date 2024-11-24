@@ -27,9 +27,14 @@
         </div>
     </div>
 
-    <div class="welcome-section">
-        <h2>Welcome to Cafe JIIT 128</h2>
-        <p>Your favorite place for delicious food and drinks!</p>
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="https://via.placeholder.com/800x400?text=Welcome+to+Cafe+JIIT+128" alt="Welcome to Cafe JIIT 128">
+            <img src="https://via.placeholder.com/800x400?text=Delicious+Food" alt="Delicious Food">
+            <img src="https://via.placeholder.com/800x400?text=Freshly+Brewed+Coffee" alt="Freshly Brewed Coffee">
+        </div>
+        <button class="carousel-button" id="prev-button">❮</button>
+        <button class="carousel-button" id="next-button">❯</button>
     </div>
 
     <script>
@@ -41,6 +46,26 @@
         }
 
         updateCartCount();
+    </script>
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.carousel-images img');
+        const totalImages = images.length;
+    
+        document.getElementById('next-button').addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        });
+    
+        document.getElementById('prev-button').addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        });
+    
+        function updateCarousel() {
+            const carouselImages = document.querySelector('.carousel-images');
+            carouselImages.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
+        }
     </script>
 </body>
 </html>

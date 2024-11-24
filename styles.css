@@ -5,6 +5,7 @@ body {
     padding: 0;
 }
 
+
 .nav {
     display: flex;
     justify-content: space-between;
@@ -17,6 +18,7 @@ body {
 .logocon {
     display: flex;
     align-items: center;
+    flex-shrink: 0; /* Prevents the logo from shrinking */
 }
 
 .logocon img {
@@ -63,7 +65,6 @@ body {
     font-size: 20px; /* Size of the cart icon */
     position: relative; /* Position for the cart count */
 }
-
 .cart-count {
     position: absolute;
     top: -5px;
@@ -231,4 +232,41 @@ button.remove {
 
 button:hover {
     background-color: #0056b3; /* Darker shade on hover */
+}
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: auto;
+}
+
+.carousel-items {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.menu-item {
+    min-width: 100%; /* Each item takes full width of the carousel */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+#prev-button {
+    left: 10px;
+}
+
+#next-button {
+    right: 10px;
 }

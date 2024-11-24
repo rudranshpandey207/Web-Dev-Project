@@ -9,6 +9,10 @@
 </head>
 <body>
     <div class="nav">
+        <div class="logocon">
+            <img src="JIIT-Noida-Logo.png" alt="JIIT logo" />
+            <h1>Cafe JIIT 128</h1>
+        </div>
         <div class="Navigation">
             <ul class="noBullet">
                 <li><a href="index.html">Home</a></li>
@@ -18,10 +22,6 @@
                 <li><a href="login.html">Login</a></li>
             </ul>
         </div>
-        <div class="logocon">
-            <img src="JIIT-Noida-Logo.png" alt="JIIT logo" />
-            <h1>Cafe JIIT 128</h1>
-        </div>
         <div class="nav-items">
             <span class="cart-icon" id="cart-icon" onclick="window.location.href='cart.html'">🛒<span class="cart-count" id="cart-count">0</span></span>
         </div>
@@ -29,36 +29,54 @@
 
     <div class="menu-section">
         <h2>Our Menu</h2>
-        <div class="menu-grid">
-            <div class="menu-item" id="item1">
-                <h3>Classic Coffee</h3>
-                <p>Rich, freshly brewed coffee made with premium beans.</p>
-                <div class="price">₹100</div>
-                <button id="add-item1" onclick="addToCart('Classic Coffee', 100, 'item1')">Add to Cart</button>
-                <button id="remove-item1" class="remove" onclick="removeFromCart('Classic Coffee')">Remove from Cart</button>
+        <div class="carousel">
+            <div class="carousel-items">
+                <div class="menu-item" id="item1">
+                    <h2>Samosa: The Spicy Affair</h2>
+                    <p>One minute you’re savoring its flavor, and the next, you’re wondering how you ended up with three in your hand!</p>
+                    <div class="price">₹10</div>
+                    <button id="add-item1" onclick="addToCart('Classic Coffee', 10, 'item1')">Add to Cart</button>
+                    <button id="remove-item1" class="remove" onclick="removeFromCart('Classic Coffee')">Remove from Cart</button>
+                </div>
+                <div class="menu-item" id="item2">
+                <h2>Pasta: The Saucy Temptation</h2>
+                <p>Indulge in our pasta, where each twirl of the fork uncovers a world of flavor. It's a classic that never goes out of style—much like that one friend who always knows how to stir things up at dinner parties!</p>
+
+                    <div class="price">₹45</div>
+                    <button id="add-item2" onclick="addToCart('Chocolate Cake', 45, 'item2')">Add to Cart</button>
+                    <button id="remove-item2" class="remove" onclick="removeFromCart('Chocolate Cake')">Remove from Cart</button>
+                </div>
+                <div class="menu-item" id="item3">
+                    <h2>Dosa: The Crispy Delight</h2>
+                    <p>Experience the magic of dosa, a thin and crispy crepe that’s a perfect canvas for a burst of flavors! One moment you’re dipping it in sambar, and the next, you’re wondering how you managed to eat three without even realizing it!</p>
+                    <div class="price">₹40</div>
+                    <button id="add-item3" onclick="addToCart('Veg Pizza', 40, 'item3')">Add to Cart</button>
+                    <button id="remove-item3" class="remove" onclick="removeFromCart('Veg Pizza')">Remove from Cart</button>
+                </div>
+                <div class="menu-item" id="item4">
+                    <h2>Paneer Patty: The Cheesy Delight</h2>
+                    <p>Sink your teeth into our paneer patty, where crispy meets creamy! One bite and you’ll be hooked, wondering how something so delicious could disappear so quickly!</p>
+                    <div class="price">₹30</div>
+                    <button id="add-item4" onclick="addToCart('Cheese Sandwich', 30, 'item4')">Add to Cart</button>
+                    <button id="remove-item4" class="remove" onclick="removeFromCart('Cheese Sandwich')">Remove from Cart</button>
+                </div>
+                <div class="menu-item" id="item5">
+                    <h2>Idli: The Steamed Delight</h2>
+                    <p>Enjoy our soft and fluffy idlis, perfect for dipping in sambar or slathering with chutney. One bite and you'll be transported to a world of comfort!</p>
+                    <div class="price">₹40</div>
+                    <button id="add-item5" onclick="addToCart('Idli', 40, 'item5')">Add to Cart</button>
+                    <button id="remove-item5" class="remove" onclick="removeFromCart('Idli')">Remove from Cart</button>
+                </div>
+                <div class="menu-item" id="item6">
+                    <h2>Pav Bhaji: The Flavor Explosion</h2>
+                    <p>Relish the vibrant mix of vegetables cooked to perfection and served with buttery pav. A street food classic that’s sure to tantalize your taste buds!</p>
+                    <div class="price">₹50</div>
+                    <button id="add-item6" onclick="addToCart('Pav Bhaji', 50, 'item6')">Add to Cart</button>
+                    <button id="remove-item6" class="remove" onclick="removeFromCart('Pav Bhaji')">Remove from Cart</button>
+                </div>
             </div>
-            <div class="menu-item" id="item2">
-                <h3>Chocolate Cake</h3>
-                <p>Decadent chocolate cake topped with rich frosting.</p>
-                <div class="price">₹250</div>
-                <button id="add-item2" onclick="addToCart('Chocolate Cake', 250, 'item2')">Add to Cart</button>
-                <button id="remove-item2" class="remove" onclick="removeFromCart('Chocolate Cake')">Remove from Cart</button>
-            </div>
-            <div class="menu-item" id="item3">
-                <h3>Veg Pizza</h3>
-                <p>A delicious pizza topped with fresh vegetables and cheese.</p>
-                <div class="price">₹300</div>
-                <button id="add-item3" onclick="addToCart('Veg Pizza', 300, 'item3')">Add to Cart</button>
-                <button id="remove-item3" class="remove" onclick="removeFromCart('Veg Pizza')">Remove from Cart</button>
-            </div>
-            <div class="menu-item" id="item4">
-                <h3>Cheese Sandwich</h3>
-                <p>A classic sandwich filled with melted cheese and fresh veggies.</p>
-                <div class="price">₹150</div>
-                <button id="add-item4" onclick="addToCart('Cheese Sandwich', 150, 'item4')">Add to Cart</button>
-                <button id="remove-item4" class="remove" onclick="removeFromCart('Cheese Sandwich')">Remove from Cart</button>
-            </div>
-            <!-- Add more menu items as needed -->
+            <button class="carousel-button" id="prev-button">❮</button>
+            <button class="carousel-button" id="next-button">❯</button>
         </div>
     </div>
 
@@ -66,14 +84,16 @@
         let cart = JSON.parse(localStorage.getItem('cart')) || {};
 
         function addToCart(itemName, itemPrice, itemId) {
-            if (cart[itemName]) {
-                cart[itemName].quantity += 1;
-            } else {
-                cart[itemName] = { price: itemPrice, quantity: 1 };
-            }
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCount();
-        }
+    const expectedTime = "30 minutes"; // Set expected delivery time
+
+    if (cart[itemName]) {
+        cart[itemName].quantity += 1;
+    } else {
+        cart[itemName] = { price: itemPrice, quantity: 1, expectedTime: expectedTime }; // Add expected time
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
 
         function removeFromCart(itemName) {
             if (cart[itemName]) {
@@ -92,6 +112,26 @@
         }
 
         updateCartCount();
+    </script>
+    <script>
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.menu-item');
+        const totalItems = items.length;
+    
+        document.getElementById('next-button').addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        });
+    
+        document.getElementById('prev-button').addEventListener('click', function() {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateCarousel();
+        });
+    
+        function updateCarousel() {
+            const carouselItems = document.querySelector('.carousel-items');
+            carouselItems.style.transform = 'translateX(' + (-currentIndex * 100) + '%)';
+        }
     </script>
 </body>
 </html>
